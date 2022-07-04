@@ -39,8 +39,8 @@ const createWindow = () => {
 
     remoteMain.enable(mainWindow.webContents);
 
-    // Default savepath
-    global["savePath"] = __dirname;
+    // Default savepath: Downloads directory
+    global["savePath"] = path.join(process.env.USERPROFILE, "/Downloads");
 
     // Load HTML file
     mainWindow.loadFile("src/index.html");
