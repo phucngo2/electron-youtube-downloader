@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Youtube Stalker</title>
+
+        <link rel="stylesheet" href="./lib/semantic-ui/semantic.min.css" />
+        <link rel="stylesheet" href="./index.css" />
+
+        <!-- jQuery -->
+        <script>
+            window.$ = window.jQuery = require("jquery");
+        </script>
+
+        <script src="./lib/semantic-ui/semantic.min.js"></script>
+        <script src="./index.js"></script>
+    </head>
+    <body>
+        <div class="app-container bg-grey">
+            <!-- Header -->
+            <div class="app-header bg-white p-4 border">
+                <!-- Web heading & icon -->
+                <h4 class="fs-26 mt-4 mb-8 app-title" id="appTitle">
+                    <i class="icon youtube red"></i> Youtube video stalker
+                </h4>
+                
+                <form class="w-100 flex-column" id="searchForm">
+                    <!-- Search bar -->
+                    <div class="ui action input w-50">
+                        <input type="text" id="inputYoutubeUrl" placeholder="Patse video id or url here..." />
+                        <button type="submit" class="ui primary icon button" data-tooltip="Search for a video from youtube" data-position="right center">
+                            <i class="icon search"></i>
+                        </button>
+                    </div>
+
+                    <!-- Save location change bar -->
+                    <div class="ui action input w-50 my-4">
+                        <input type="text" disabled id="inputSavePath" />
+                        <button type="button" class="ui secondary icon button" id="btnSavePath" data-tooltip="Change file save location" data-position="right center">
+                            <i class="download icon"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Loading -->
+            <div
+                class="app-content bg-white p-10 m-10 rounded border d-none"
+                id="appLoading"
+            >
+                <div class="ui active centered inline loader"></div>
+            </div>
+
+            <!-- App Content -->
+            <div
+                class="app-content bg-white p-10 m-10 rounded border d-none"
+                id="appContent"
+            >
+            <div class="w-content border-top">
+                <!-- Video detail info -->
+                <div class="fw-bold pb-3" id="videoTitle"></div>
+
+                <div class="video-detail">
+                    <div class="video-container">
+                        <iframe class="responsive-iframe" id="videoPreview" src="https://www.youtube.com/embed/dQw4w9WgXcQ" height="315" width="560" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+
+                    <div class="keyword-container">
+                        <div class="keywords-zone w-100 border rounded" id="videoKeywords">
+                            <div class="floating-copy-container">
+                                <i
+                                    aria-hidden="true"
+                                    class="copy circular icon color-grey bg-white"
+                                    style="cursor: pointer;"
+                                    data-content="Copied to clipboard!"
+                                    id="btnCopyKeywords"
+                                ></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Description -->
+                <div class="fw-bold pb-3">🌠 Encode &amp; Download!</div>
+    
+                <div class="">
+                    The original Youtube video format doesn't have audio. These
+                    options below will encode the video to merge video and audio
+                    together before downloading. So, it will take a little bit longer
+                    than usual, but the video output will have higher quality with
+                    audio included.
+                    <ul>
+                        <li>
+                            The "Highest Quality" option will automatically choose
+                            the best video quality format to encode.
+                        </li>
+                        <li>
+                            The "Audio" option will automatically choose the best
+                            audio quality format and convert to mp3.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Table to list video formats -->
+                <table class="ui striped table celled">
+                    <thead>
+                        <tr>
+                            <th>Quality</th>
+                            <th>Original Size</th>
+                            <th>Original Container</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyFormats">
+                        <tr>
+                            <td>Quality</td>
+                            <td>Original Size</td>
+                            <td>Actions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Floating buttons to navigate app -->
+        <div class="ui icon buttons floating-buttons">
+            <a class="ui button" id="btnPlay" href="https://youtu.be/dQw4w9WgXcQ" target="_blank">
+                <i class="play icon"></i>
+            </a>
+            <button class="ui button" id="btnPause">
+                <i class="pause icon"></i>
+            </button>
+            <button class="ui button" id="btnStop">
+                <i class="stop icon"></i>
+            </button>
+        </div>
+    </body>
+</html>

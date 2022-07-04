@@ -1,0 +1,75 @@
+{
+    "name": "youtube",
+    "version": "1.0.0",
+    "description": "Electron app for download video from youtube",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron-forge start",
+        "package": "electron-forge package",
+        "make": "electron-forge make",
+        "publish": "electron-forge publish",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": {
+        "name": "Ngo Bap",
+        "email": "phucnnh21@gmail.com"
+    },
+    "license": "ISC",
+    "config": {
+        "forge": {
+            "packagerConfig": {},
+            "makers": [
+                {
+                    "name": "@electron-forge/maker-squirrel",
+                    "config": {
+                        "name": "youtubeStalker"
+                    }
+                },
+                {
+                    "name": "@electron-forge/maker-zip",
+                    "platforms": [
+                        "darwin"
+                    ]
+                },
+                {
+                    "name": "@electron-forge/maker-deb",
+                    "config": {}
+                },
+                {
+                    "name": "@electron-forge/maker-rpm",
+                    "config": {}
+                }
+            ],
+            "publishers": [
+                {
+                    "name": "@electron-forge/publisher-github",
+                    "config": {
+                        "repository": {
+                            "owner": "phucnnh21",
+                            "name": "electron-youtube-downloader"
+                        },
+                        "draft": true
+                    }
+                }
+            ]
+        }
+    },
+    "devDependencies": {
+        "@electron-forge/cli": "^6.0.0-beta.61",
+        "@electron-forge/maker-deb": "^6.0.0-beta.61",
+        "@electron-forge/maker-rpm": "^6.0.0-beta.61",
+        "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+        "@electron-forge/maker-zip": "^6.0.0-beta.61",
+        "@electron-forge/publisher-github": "^6.0.0-beta.61",
+        "electron": "^19.0.4"
+    },
+    "dependencies": {
+        "@electron/remote": "^2.0.8",
+        "electron-squirrel-startup": "^1.0.0",
+        "ffmpeg-static": "^5.0.2",
+        "jquery": "^3.6.0",
+        "sweetalert2": "^11.4.19",
+        "ytdl-core": "^4.11.0"
+    }
+}
