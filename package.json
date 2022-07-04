@@ -1,6 +1,6 @@
 {
     "name": "youtube",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "description": "Electron app for download video from youtube",
     "main": "main.js",
     "scripts": {
